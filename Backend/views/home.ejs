@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">User Management System</h1>
+
+        <!-- Display Users -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Current Users</h2>
+            <div class="overflow-x-auto rounded-lg shadow">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-blue-500 text-white">
+                        <tr>
+                            <th class="py-3 px-4 text-left">User Id</th>
+                            <th class="py-3 px-4 text-left">User Name</th>
+                            <th class="py-3 px-4 text-left">User Email</th>
+                            <th class="py-3 px-4 text-left">Age</th>
+                            <th class="py-3 px-4 text-left">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700 divide-y divide-gray-200">
+                        <% data.forEach(user => { %>
+                        <tr>
+                            <td class="py-2 px-4"><%= user.userUniqueId %></td>
+                            <td class="py-2 px-4"><%= user.userName %></td>
+                            <td class="py-2 px-4"><%= user.userEmail %></td>
+                            <td class="py-2 px-4"><%= user.userAge %></td>
+                            <td class="py-2 px-4">
+                                <form action="/delete" method="post">
+                                    <input type="hidden" name="userUniqueId" value="<%= user.userUniqueId %>">
+                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Add User Form -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Add User</h2>
+            <form action="/" method="post" class="bg-white p-6 rounded-lg shadow space-y-4">
+                <input type="text" placeholder="User Unique Id" name="userUniqueId" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" placeholder="User Name" name="userName" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" placeholder="User Email" name="userEmail" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" placeholder="User Age" name="userAge" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded w-full">
+                    Submit
+                </button>
+            </form>
+        </section>
+
+        <!-- Update User Form -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Update User</h2>
+            <form action="/update" method="post" class="bg-white p-6 rounded-lg shadow space-y-4">
+                <input type="text" placeholder="User Unique Id" name="userUniqueId" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" placeholder="User Name" name="userName" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" placeholder="User Email" name="userEmail" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" placeholder="User Age" name="userAge" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded w-full">
+                    Update
+                </button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
