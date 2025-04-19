@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 // Sample Users Data
 let users = [
     { userUniqueId: "1", userName: "Aditya Gupta", userEmail: "aditya@gmail.com", userAge: "22" },
