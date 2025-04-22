@@ -17,6 +17,7 @@ let users = [
     { userUniqueId: "3", userName: "Sachin Yadav", userEmail: "sachin@gmail.com", userAge: "22" } 
 ];
 
+
 // Home Route - Display Users
 app.get("/", (req, res) => {
     res.render("home", { data: users });
