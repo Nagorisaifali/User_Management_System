@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let users = [
     { userUniqueId: "1", userName: "Aditya Gupta", userEmail: "aditya@gmail.com", userAge: "22" },
     { userUniqueId: "2", userName: "Vanshita Jaiswal", userEmail: "vanshita@gmail.com", userAge: "21" },
-    { userUniqueId: "3", userName: "Sachin Yadav", userEmail: "sachin@gmail.com", userAge: "22" } 
+    { userUniqueId: "3", userName: "Sachin Yadav", userEmail: "sachin@gmail.com", userAge: "22" } , 
 ];
 
 
@@ -22,6 +22,7 @@ let users = [
 app.get("/", (req, res) => {
     res.render("home", { data: users });
 });
+
 
 // Add User Route
 app.post("/", (req, res) => {
@@ -35,6 +36,7 @@ app.post("/", (req, res) => {
     users.push(newUser);
     res.render("home", { data: users });
 });
+
 
 // Delete User Route
 app.post('/delete', (req, res) => {
